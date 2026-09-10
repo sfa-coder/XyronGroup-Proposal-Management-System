@@ -1,0 +1,125 @@
+{
+  "entities": {
+    "proposal": {
+      "title": "Proposal Document",
+      "description": "Proposals and quotations created in XyronGroup platform",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "docNumber": { "type": "string" },
+        "title": { "type": "string" },
+        "docType": { "type": "string", "enum": ["Proposal", "Quotation"] },
+        "clientId": { "type": "string" },
+        "status": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "validUntil": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "docNumber", "title", "docType", "clientId", "status"]
+    },
+    "client": {
+      "title": "Client Contact",
+      "description": "Client profile in the CRM database",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "companyName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["id", "name", "companyName"]
+    },
+    "invoice": {
+      "title": "Invoice",
+      "description": "Invoices generated from approved proposals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "proposalId": { "type": "string" },
+        "clientId": { "type": "string" },
+        "status": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "paidAmount": { "type": "number" }
+      },
+      "required": ["id", "invoiceNumber", "clientId", "status"]
+    },
+    "receipt": {
+      "title": "Payment Receipt",
+      "description": "Payment records received against invoices",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "receiptNumber": { "type": "string" },
+        "invoiceId": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentDate": { "type": "string" }
+      },
+      "required": ["id", "receiptNumber", "invoiceId", "amount"]
+    },
+    "company": {
+      "title": "Company Profile",
+      "description": "Company profile branding, address, bank and tax details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "template": {
+      "title": "Industry Template",
+      "description": "Preset industry proposal template",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "user": {
+      "title": "User Profile",
+      "description": "Application user account",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["id", "username", "role"]
+    }
+  },
+  "firestore": {
+    "/proposals/{proposalId}": {
+      "schema": "proposal",
+      "description": "All proposal and quotation documents"
+    },
+    "/clients/{clientId}": {
+      "schema": "client",
+      "description": "All CRM client records"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "invoice",
+      "description": "All billing invoice records"
+    },
+    "/receipts/{receiptId}": {
+      "schema": "receipt",
+      "description": "All payment receipt records"
+    },
+    "/companies/{companyId}": {
+      "schema": "company",
+      "description": "Company configuration and brand profiles"
+    },
+    "/templates/{templateId}": {
+      "schema": "template",
+      "description": "Industry templates catalogue"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "Team accounts and user roles"
+    }
+  }
+}

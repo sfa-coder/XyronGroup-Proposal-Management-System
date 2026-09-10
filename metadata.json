@@ -1,0 +1,6 @@
+{
+  "name": "PropelQuote - Business Proposal & Quotation Manager",
+  "description": "Modern web dashboard for creating, managing, tracking, and exporting professional proposals, quotations, customized invoices, payment receipts, and completed projects archive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

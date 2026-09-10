@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary-color: #2F80ED;
+  --secondary-light-blue: #E1F5FE;
+  --bg-canvas: #F5F7FA;
+  --accent-teal: #42B0D5;
+  --dark-slate: #333333;
+  --light-gray: #BDBDBD;
+}
+
+.dark {
+  --bg-canvas: #0F172A;
+  --dark-slate: #F8FAFC;
+  --light-gray: #475569;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--dark-slate);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Dynamic Primary Color Accent Binds */
+.bg-indigo-600 {
+  background-color: var(--primary-color, #2F80ED) !important;
+}
+
+.text-indigo-600 {
+  color: var(--primary-color, #2F80ED) !important;
+}
+
+.border-indigo-600 {
+  border-color: var(--primary-color, #2F80ED) !important;
+}
+
+.dark .text-indigo-400 {
+  color: var(--primary-color, #2F80ED) !important;
+}
+
+.dark .bg-indigo-600 {
+  background-color: var(--primary-color, #2F80ED) !important;
+}
+
+/* Soft Neomorphic Card Styling */
+.neo-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+}
+
+.dark .neo-card {
+  background-color: #1E293B;
+  border-color: rgba(51, 65, 85, 0.8);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide navigation, overlays, modals, top header, buttons during print */
+  aside,
+  header,
+  nav,
+  .print\:hidden,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Target printable container */
+  #printable-pdf-document {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: static !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure pages cut nicely */
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+}
+

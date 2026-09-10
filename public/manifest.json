@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "XyronGroup - Proposal & Quotation Manager",
+  "short_name": "Xyron Quotes",
+  "description": "Professional proposals, quotations, customized invoices, and payment receipts management.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/xyron-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
